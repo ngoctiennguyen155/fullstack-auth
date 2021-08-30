@@ -3,9 +3,9 @@ const path = require("path");
 const cors = require("cors");
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 
-app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, "../Client/build")));
 
 app.use(cors());
 app.use(express.json());
@@ -16,8 +16,8 @@ app.get("/api/auth/login", (req, res) => {
 app.post("/api/auth/login", (req, res) => {
   res.json({ token: "connected", user: { name: "tien" } });
 });
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../Client/build", "index.html"));
 });
 
 app.listen(PORT, () => {
